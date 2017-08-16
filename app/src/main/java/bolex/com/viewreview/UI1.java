@@ -70,11 +70,12 @@ public class UI1 extends View {
         path.moveTo(0, 300); // 我移~~
         path.lineTo(1200, 0); // 画竖线
 
-        path.moveTo(0, 400); // 我移~~
+        path.moveTo(0, 700); // 我移~~
         path.quadTo(0, 0,400,600); // 我移~~
-        path.rQuadTo(100, 200, 100, 0);
-
+        path.rQuadTo(400, 600, 400, 0);
         path.moveTo(0, 500); // 我移~~
+
+
 
 
         canvas.drawPath(path,paint);
