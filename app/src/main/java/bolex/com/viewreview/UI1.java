@@ -62,23 +62,26 @@ public class UI1 extends View {
             canvas.drawArc(left, top, right, bottom, 0, 90, true, paint); // 绘制扇形
             paint.setColor(Color.GREEN);
             canvas.drawArc(left, top, right, bottom, -90, 90, false, paint); // 绘制弧形
-        }
+
         Path path = new Path();
         paint.setStyle(Paint.Style.STROKE);
         path.lineTo(100, 100); // 由当前位置 (0, 0) 向 (100, 100) 画一条直线
         path.rLineTo(100, 0); // 由当前位置 (100, 100) 向正右方 100 像素的位置画一条直线
         path.moveTo(0, 300); // 我移~~
         path.lineTo(1200, 0); // 画竖线
-
         path.moveTo(0, 700); // 我移~~
         path.quadTo(0, 0,400,600); // 我移~~
         path.rQuadTo(400, 600, 400, 0);
-        path.moveTo(0, 500); // 我移~~
+        path.moveTo(0, 800); // 我移~~
+        path.arcTo(600, 600, 900, 900, 0, 90, false); // 强制移动到弧形起点（无痕迹）
+        path.addArc(600, 600, 900, 900, -90, 90);
+        path.close(); //合并起点和终点
+            canvas.drawPath(path,paint);
+
+        }
 
 
 
-
-        canvas.drawPath(path,paint);
 
 
 
