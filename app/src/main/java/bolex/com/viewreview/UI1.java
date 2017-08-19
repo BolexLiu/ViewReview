@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Rect;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -77,9 +78,34 @@ public class UI1 extends View {
         path.addArc(600, 600, 900, 900, -90, 90);
         path.close(); //合并起点和终点
             canvas.drawPath(path,paint);
-
         }
 
+        Paint linePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        linePaint.setColor(Color.WHITE);
+        int textSize = 14;
+        linePaint.setTextSize(textSize);
+        int startLineX = 20;
+        int startLineY = 40;
+
+        int stopBottomToRightLineX = 400;
+        int startBottomToHightLineY = 240;
+
+        canvas.drawLine(startLineX, startLineY, startLineX, startBottomToHightLineY, linePaint);
+        canvas.drawLine(startLineX, startBottomToHightLineY, stopBottomToRightLineX, startBottomToHightLineY, linePaint);
+        int lineWidth = stopBottomToRightLineX - startLineX; //底部线长度
+        int padding = 5;
+        int itemSize = 7;
+        int itemWidth = (lineWidth - padding * itemSize + 1) / itemSize; //item 长度
+        linePaint.setColor(Color.GREEN);
+        for (int i1 = 0; i1 < itemSize; i1++) {
+            canvas.drawText(i1 + "", startLineX + padding * i1 + itemWidth * i1 + itemWidth / 2, startBottomToHightLineY + padding + textSize, linePaint);
+            Rect rect = new Rect(startLineX + padding * i1 + itemWidth * i1,
+                    startBottomToHightLineY - i1 * 10,
+                    startLineX + padding * i1 + itemWidth * i1 + itemWidth,
+                    startBottomToHightLineY);
+            canvas.drawRect(rect, linePaint);
+
+        }
 
 
 
